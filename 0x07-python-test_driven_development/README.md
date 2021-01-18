@@ -52,8 +52,7 @@ All your functions should have a documentation (python3 -c 'print(__import__("my
 A documentation is not a simple word, it’s a real sentence explaining what’s the purpose of the module, class or method (the length of it will be verified)
 We strongly encourage you to work together on test cases, so that you don’t miss any edge case
 
-
-# Tasks
+# tasks
 
 # 0. Integers addition mandatory
 
@@ -77,7 +76,6 @@ div can’t be equal to 0, otherwise raise a ZeroDivisionError exception with th
 All elements of the matrix should be divided by div, rounded to 2 decimal places
 Returns a new matrix
 You are not allowed to import any module
-
 
 # 2. Say my name mandatory
 

@@ -1,25 +1,30 @@
 #!/usr/bin/python3
+
 """
-Module containing text_indentation
+This Module contains a function that prints a text
+with 2 new lines after each of these characters: ., ? and :
 """
 
 
 def text_indentation(text):
-    """ prints a text with 2 new lines after each of these characters """
-    if not isinstance(text, str) or text is None or len(text) < 0:
-        raise TypeError("text must be a string")
-    flag = 0
+
+    """
+    Prints a text with 2 new lines after each of these characters: ., ? and :
+    """
+    if type(text) is not str:
+        raise TypeError('text must be a string')
+    space_flag = 0
     for char in text:
-        if char in ".:?":
-            print(char)
-            print("")
-            flag = 1
-        else:
-            if flag == 0:
-                print(char, end="")
+        if space_flag == 0:
+            if char == " ":
+                continue
             else:
-                if char in " \t":
-                    pass
-                else:
-                    print(char, end="")
-                    flag = 0
+                print(char, end="")
+                space_flag = 1
+        else:
+            if char == "." or char == "?" or char == ":":
+                print(char)
+                print()
+                space_flag = 0
+            else:
+                print(char, end="")

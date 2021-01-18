@@ -1,38 +1,88 @@
-The "0-add_integer" module
-======================
-
-Using "add_integer"
--------------------
-
-This is an example text file in reStructuredText format.  First import
-"add_integer" from the 0-add_integer module:
-
 >>> add_integer = __import__('0-add_integer').add_integer
 
-Now use it:
+test 0 with two integers
+>>> add_integer(1, 2)
+3
 
->>> print(add_integer(6, 4))
-10
+test 1 with two floats
+>>> add_integer(1.0, 2.0)
+3
 
->>> print(add_integer(-3, 100))
-97
+test 2 with int and float
+>>> add_integer(1, 2.0)
+3
 
->>> print(add_integer(2))
+test 3 with positive int and negative
+>>> add_integer(100, -2)
+98
+
+test 4 using default parameter b with a int
+>>> add_integer(2)
 100
 
->>> add_integer(100.3, 100.3)
-200
+test 5 using default parameter b with a float
+>>> add_integer(2.0)
+100
 
->>> add_integer("school", 100.3)
+test 6 float and negative
+>>> add_integer(100.3, -2)
+98
+
+test 7 integer and string
+>>> add_integer(4, "School")
 Traceback (most recent call last):
-...
+    ...
+TypeError: b must be an integer
+
+
+test 8 with parameter a None
+>>> add_integer(None)
+Traceback (most recent call last):
+    ...
 TypeError: a must be an integer
 
->>> add_integer("Holberton", "School")
+test 9 no parameters
+>>> add_integer()
 Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer(None, "School")
+    ...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+test 10 infinity
+>>> add_integer(1e100000)
 Traceback (most recent call last):
-...
+    ...
+OverflowError: cannot convert float infinity to integer
+
+test 11 negative and negative
+>>> add_integer(-1, -1)
+-2
+
+test 12 with list
+>>> add_integer([1,2,3], 1)
+Traceback (most recent call last):
+    ...
 TypeError: a must be an integer
+
+test 13 with a variable
+>>> add_integer(a, 1)
+Traceback (most recent call last):
+    ...
+NameError: name 'a' is not defined
+
+test 14 with syntax error
+>>> add_integer([1, 2)
+Traceback (most recent call last):
+    ...
+SyntaxError: invalid syntax
+
+test 15 with more parameters than 2
+>>> add_integer(1, 2, 3)
+Traceback (most recent call last):
+    ...
+TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+test 16 with float NaN
+>>> add_integer(float('nan'))
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer

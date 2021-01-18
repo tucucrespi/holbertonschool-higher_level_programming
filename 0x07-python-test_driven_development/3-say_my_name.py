@@ -1,20 +1,21 @@
 #!/usr/bin/python3
+
 """
-Module containing say_my_name
+function that prints
+first_name and last_name must be strings otherwise, raise a TypeError exception
+with the message first_name must be a string or last_name must be a string
 """
 
 
 def say_my_name(first_name, last_name=""):
-    """ prints the name """
-    if not isinstance(first_name, str):
-        raise TypeError("first_name must be a string")
-    if not isinstance(last_name, str):
-        raise TypeError("last_name must be a string")
-    if len(first_name) == 0:
-        print("My name is {:s}".format(last_name))
-    elif len(last_name) == 0:
-        print("My name is {:s}".format(first_name))
-    elif len(first_name) == 0 and len(last_name) == 0:
-        print("My name is")
-    else:
-        print("My name is {:s} {:s}".format(first_name, last_name))
+
+    """
+    prints My name is <first name> <last name>
+    """
+
+    if type(first_name) is not str:
+        raise TypeError('first_name must be a string')
+    if type(last_name) is not str:
+        raise TypeError('last_name must be a string')
+
+    print("My name is {:s} {:s}".format(first_name, last_name))

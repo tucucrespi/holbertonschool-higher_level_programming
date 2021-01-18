@@ -1,88 +1,55 @@
-The "5-text_indentation" module
-======================
+>>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Using "text_indentation"
--------------------
-
-This is a test text file in reStructuredText format.  
-The 5-text_indentation Module:
-
-    >>> text_indentation = __import__("5-text_indentation").text_indentation
-
-Make Sure Documentation Exists:
-
-    >>> module_documentation = __import__("5-text_indentation").__doc__
-    >>> print(len(module_documentation) > 0)
-    True
-    >>> function_documentation = __import__("5-text_indentation").text_indentation.__doc__
-    >>> print(len(function_documentation) > 0)
-    True
-
-Now use it:
-
->>> text = "Hi. This is a string? Here are some items: dog, cat, rabbit."
-
->>> text_indentation(text)
-Hi.
+test 0 with a text including . ? :
+>>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <BLANKLINE>
-This is a string?
+Quonam modo?
 <BLANKLINE>
-Here are some items:
+Utrum igitur tibi litteram videor an totas paginas commovere?
 <BLANKLINE>
-dog, cat, rabbit.
+Non autem hoc:
 <BLANKLINE>
+igitur ne illud quidem
 
->>> text_indentation("hello")
-hello
->>> text = "     Hi. Ho.    Hey.   "
->>> text_indentation(text)
-Hi.
-<BLANKLINE>
-Ho.
-<BLANKLINE>
-Hey.
-<BLANKLINE>
-
->>> t="Hello. : \nI am a string? .\n"
->>> text_indentation(t)
-Hello.
+test 1 with . ? :
+>>> text_indentation(".?:")
+.?
 <BLANKLINE>
 :
-<BLANKLINE>
-<BLANKLINE>
-I am a string?
-<BLANKLINE>
-.
-<BLANKLINE>
-<BLANKLINE>
 
->>> t = "    MY SPOON IS TOO BIG!...    I am a apple.\n     cool    "
->>> text_indentation(t)
-MY SPOON IS TOO BIG!.
-<BLANKLINE>
-.
-<BLANKLINE>
-.
-<BLANKLINE>
-I am a apple.
-<BLANKLINE>
-<BLANKLINE>
-cool    
->>> text_indentation("")
->>> text_indentation("       ")
-
-Invalid arguments
---------------------
->>> text_indentation(-1)
+test 2 with no parameters
+>>> text_indentation()
 Traceback (most recent call last):
-        ...
-TypeError: text must be a string
+...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
 
->>> text_indentation(3.14)
-Traceback (most recent call last):
-        ...
-TypeError: text must be a string
+test 3 with None
 >>> text_indentation(None)
 Traceback (most recent call last):
-        ...
+...
+TypeError: text must be a string
+
+test 4 with boolean
+>>> text_indentation(True)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+
+test 5 with two strings
+>>> text_indentation("string1", "string2")
+Traceback (most recent call last):
+...
+TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+test 6 with text no defined
+>>> text_indentation(text)
+Traceback (most recent call last):
+...
+NameError: name 'text' is not defined
+
+test 7 with int
+>>> text_indentation(1)
+Traceback (most recent call last):
+...
 TypeError: text must be a string
