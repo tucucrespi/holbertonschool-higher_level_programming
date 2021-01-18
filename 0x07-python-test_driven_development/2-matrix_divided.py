@@ -1,30 +1,42 @@
 #!/usr/bin/python3
+"""TDD module"""
 
-"""
-Function that divides all elements of a matrix.
-"""
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/2-matrix_divided.txt")
 
 
 def matrix_divided(matrix, div):
-
     """
-    matrix must be a list of lists of integers or floats
+    Divide matrix by div and return new matrix with new values
     """
-    if type(matrix) is not list:
-        raise TypeError("matrix must be a matrix (list of lists) " +
-                        "of integers/floats")
-    if type(div) is not int and type(div) is not float:
+    if type(div) != int and type(div) != float:
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
+    if type(matrix) != list:
+        raise TypeError("matrix must be a matrix (array of arrays \
+of integers/floats")
 
-    for row in range(0, len(matrix)):
-        if len(matrix[0]) != len(matrix[row]):
+    largo = len(matrix[0])
+    if largo == 0:
+        raise TypeError("matrix must be a matrix (array of arrays \
+of integers/floats")
+
+    for elem in matrix:
+        if largo != len(elem):
             raise TypeError("Each row of the matrix must have the same size")
-
+        if type(elem) != list:
+            raise TypeError("matrix must be a matrix (array of arrays \
+of integers/floats")
+        for val in elem:
+                if type(val) != float and type(val) != int:
+                    raise TypeError("matrix must be a matrix (array of arrays \
+of integers/floats)")
     new_matrix = []
-    for position in range(len(matrix)):
+    for elem in range(len(matrix)):
         new_matrix.append([])
-        for nbr in matrix[position]:
-            new_matrix[position].append(round((nbr / div), 2))
+        for item in matrix[elem]:
+            new_matrix[elem].append(round((item / div), 2))
     return new_matrix
